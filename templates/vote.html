@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Cast Vote</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-  <h2>Cast Vote</h2>
-  <form method="post">
-    Candidate: <input name="candidate"><br>
-    <button type="submit">Submit Vote</button>
-  </form>
+  <div class="container">
+    <h2>Cast Vote</h2>
+    <form method="post">
+      <input name="candidate" placeholder="Candidate"><br>
+      <button type="submit">Submit Vote</button>
+    </form>
+  </div>
 </body>
 </html>
