@@ -40,12 +40,16 @@ def vote(voter):
         if has_voted(voter, votes):
             return "Duplicate vote prevented"
 
+      from elgamal import encrypt_vote
+
         vote_data = f"{voter}:{candidate}"
-        vote_hash = hash_vote(vote_data)
+
+        cipher = encrypt_vote(candidate)
+        vote_hash = hash_vote(str(cipher))
 
         votes.append({
             "voter": voter,
-            "candidate": candidate,
+            "cipher": cipher,
             "hash": vote_hash
         })
 
