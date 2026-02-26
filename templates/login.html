@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Secure Voting Login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-  <h2>Secure Voting Login</h2>
-  <form method="post">
-    Voter ID: <input name="voter"><br>
-    Password: <input name="password" type="password"><br>
-    <button type="submit">Login</button>
-  </form>
+  <div class="container">
+    <h2>Secure Voting Login</h2>
+    <form method="post">
+      <input name="voter" placeholder="Voter ID"><br>
+      <input name="password" type="password" placeholder="Password"><br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </body>
 </html>
