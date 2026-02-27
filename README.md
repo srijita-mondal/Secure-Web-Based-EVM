@@ -48,3 +48,8 @@ Authenticated voter submitting candidate selection.
 Successful vote recording after encrypted and integrity-protected storage.
 
 ![Success](screenshots/success.png)
+
+### Duplicate votes check(Still under process)
+Duplicate votes are checked and prevented. Till now duplicates are only checked by Username and Password. I will be working on digital signature algorithm for document verification.
+
+![Success](screenshots/duplicate.png)
