@@ -1,8 +1,7 @@
 # Secure-Web-Based-EVM
-Prototype secure electronic voting system demonstrating authentication, hash-linked vote storage, and integrity verification.
-## Cryptographic Design
+Prototype secure electronic voting system demonstrating authentication, hash-linked vote storage, and integrity verification. The system applies ElGamal public-key encryption to protect vote confidentiality and SHA-256 hashing to ensure vote integrity.
 
-This prototype incorporates ElGamal encryption to provide vote confidentiality in addition to integrity protection.
+## Cryptographic Design
 
 Voting workflow:
 
