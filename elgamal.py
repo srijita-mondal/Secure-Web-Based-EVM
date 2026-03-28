@@ -1,21 +1,20 @@
 import random
 
-# small demo parameters (educational)
 p = 30803
 g = 2
-x = 12345  # private key
-y = pow(g, x, p)  # public key
+x = 12345  
+y = pow(g, x, p)  
 
-def encrypt_vote(message: str):
-    m = sum(ord(c) for c in message) % p
-    k = random.randint(2, p-2)
+
+def encrypt_vote(m: int):
+    k = random.randint(2, p - 2)
     c1 = pow(g, k, p)
     c2 = (m * pow(y, k, p)) % p
     return (c1, c2)
+
 
 def decrypt_vote(cipher):
     c1, c2 = cipher
     s = pow(c1, x, p)
     s_inv = pow(s, -1, p)
-    m = (c2 * s_inv) % p
-    return m
+    return (c2 * s_inv) % p

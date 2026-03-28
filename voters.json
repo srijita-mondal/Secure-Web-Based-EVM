@@ -1,4 +1,17 @@
 {
-  "voter1": "pass123",
-  "voter2": "secure456"
+  "voter1": {
+    "password": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "name": "Rahul Patel",
+    "role": "voter"
+  },
+  "voter2": {
+    "password": "8c6976e5b5410415bde908bd4dee15dfb16a0c47e6b7e7e5cfa6b1e5e8f7b5d2",
+    "name": "Priya Shah",
+    "role": "voter"
+  },
+  "admin1": {
+    "password": "5e884898da28047151d0e56f8dc6292773603d0d6aabbddfbb3e7f8c6f5c5d1a",
+    "name": "Election Officer",
+    "role": "admin"
+  }
 }
