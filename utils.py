@@ -1,7 +1,7 @@
 import json
 import hashlib
 
-SECRET_KEY = "super_secret_key_123"
+SECRET_KEY = "secure_key_456"
 
 def load_json(filename):
     try:
@@ -14,6 +14,7 @@ def save_json(filename, data):
     with open(filename, "w") as f:
         json.dump(data, f, indent=4)
 
-def generate_hash(vote, prev_hash):
-    data = vote + prev_hash + SECRET_KEY
-    return hashlib.sha256(data.encode()).hexdigest()
+# 🔐 Now supports user + vote binding
+def generate_hash(data, prev_hash):
+    combined = data + prev_hash + SECRET_KEY
+    return hashlib.sha256(combined.encode()).hexdigest()

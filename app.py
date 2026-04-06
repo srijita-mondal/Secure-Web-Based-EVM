@@ -5,7 +5,8 @@ from utils import load_json, save_json, generate_hash
 app = Flask(__name__)
 app.secret_key = "super_secret_key_123"
 
-# ================= HOME / LOGIN =================
+
+# ================= LOGIN =================
 @app.route("/", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -39,8 +40,7 @@ def signup():
 
         voters.append({
             "username": username,
-            "password": password,
-            "has_voted": False
+            "password": password
         })
 
         save_json("voters.json", voters)
@@ -59,27 +59,26 @@ def vote():
     voters = load_json("voters.json")
     votes = load_json("votes.json")
 
-    user = next((u for u in voters if u["username"] == session["user"]), None)
-
-    if user["has_voted"]:
+    # 🔐 CHECK FROM VOTES.JSON (NOT has_voted)
+    if any(v.get("username") == session["user"] for v in votes):
         return "You have already voted!"
 
     if request.method == "POST":
-        candidate = request.form["candidate"]
+        candidate = request.form["candidate"].strip().lower()
 
         prev_hash = votes[-1]["hash"] if votes else "0"
-        vote_hash = generate_hash(candidate, prev_hash)
+
+        # 🔐 Include username in hash
+        vote_hash = generate_hash(candidate + session["user"], prev_hash)
 
         votes.append({
+            "username": session["user"],
             "vote": candidate,
             "hash": vote_hash,
             "prev_hash": prev_hash
         })
 
-        user["has_voted"] = True
-
         save_json("votes.json", votes)
-        save_json("voters.json", voters)
 
         return redirect("/success")
 
@@ -124,7 +123,7 @@ def admin():
     results = {}
 
     for v in votes:
-        recalculated = generate_hash(v["vote"], prev_hash)
+        recalculated = generate_hash(v["vote"] + v["username"], prev_hash)
 
         if recalculated != v["hash"]:
             valid = False

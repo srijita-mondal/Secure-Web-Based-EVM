@@ -1,7 +1,1 @@
-[
-    {
-        "username": "abc",
-        "password": "scrypt:32768:8:1$LgxVGBhNIxpjbe7Q$a3de5a2fddbeea1f81cf131ba94e483da20f0759e797a1e04b05b90890d284a891f673a57a6c0574eac20b42f70457fa39f5d9ffb0edb6a77d7df06d3d0c170d",
-        "has_voted": true
-    }
-]
+[]
