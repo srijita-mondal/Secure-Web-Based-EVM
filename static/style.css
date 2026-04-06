@@ -1,48 +1,91 @@
+/* Reset */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
 }
 
+/* Container */
 .container {
-    width: 320px;
+    width: 350px;
     margin: 80px auto;
-    padding: 20px;
+    padding: 30px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
 
+/* Headings */
 h2 {
     margin-bottom: 20px;
-    color: #2c3e50;
+    color: #444;
 }
 
-input {
+/* Inputs */
+input[type="text"],
+input[type="password"] {
     width: 90%;
-    padding: 8px;
-    margin: 6px 0;
+    padding: 10px;
+    margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
+    outline: none;
 }
 
+/* Radio */
+label {
+    display: block;
+    margin: 8px 0;
+}
+
+/* Buttons */
 button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    border: none;
-    background-color: #2c7be5;
+    background: #667eea;
     color: white;
-    border-radius: 4px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
     cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #1a5fcc;
+    background: #5a67d8;
 }
 
+/* Links */
+a {
+    text-decoration: none;
+    color: #667eea;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Messages */
 .success {
-    color: #2e7d32;
+    color: green;
     font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+/* Result list */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #f4f4f4;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 6px;
 }

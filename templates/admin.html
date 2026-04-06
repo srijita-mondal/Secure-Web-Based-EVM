@@ -1,13 +1,30 @@
-<h2>Election Results</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
 
-{% if valid %}
-<p style="color:green;">✔ Data Integrity Verified</p>
-{% else %}
-<p style="color:red;">⚠ Data Tampered!</p>
-{% endif %}
+<div class="container">
+    <h2>Admin Panel</h2>
 
-<ul>
-{% for candidate, count in results.items() %}
-    <li>{{ candidate }} : {{ count }}</li>
-{% endfor %}
-</ul>
+    {% if valid %}
+        <p class="success">✔ Votes are secure (No tampering)</p>
+    {% else %}
+        <p class="error">⚠ Data has been tampered!</p>
+    {% endif %}
+
+    <h3>Results</h3>
+
+    <ul>
+        {% for candidate, count in results.items() %}
+            <li>{{ candidate }} : {{ count }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="/logout">Logout</a>
+</div>
+
+</body>
+</html>

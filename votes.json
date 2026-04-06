@@ -1,10 +1,7 @@
 [
-  {
-    "voter": "voter1",
-    "cipher": [
-      21644,
-      28657
-    ],
-    "hash": "b6351550e0b809c63c4fbfc2dd0fdd1a6298c7cb7b2333eb1a64b641dde42348"
-  }
+    {
+        "vote": "Candidate A",
+        "hash": "bef61f4a2ac2e516604314ecb68f7f3d0d1533fd8ee7dd0c6cd595931985d10c",
+        "prev_hash": "0"
+    }
 ]
