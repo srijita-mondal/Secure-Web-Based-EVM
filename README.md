@@ -278,14 +278,6 @@ Even with JSON storage, the system ensures:
 ✔ Tamper detection  
 ✔ User authentication  
 
----
-
-## 👩‍💻 Author
-
-**Srijita Mondal**
-
----
-
 ## ⭐ Acknowledgment
 
 This project was developed as part of learning secure system design, web development, and cryptography concepts.
