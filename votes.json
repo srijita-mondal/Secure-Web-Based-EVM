@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "username": "abc",
+        "vote": "462,334",
+        "hash": "8e037f582a5e389e62b14b84089596a074f9e83b146c665a08b33fa90ef61b12",
+        "prev_hash": "0"
+    }
+]

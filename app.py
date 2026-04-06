@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect, session
 from werkzeug.security import generate_password_hash, check_password_hash
-from utils import load_json, save_json, generate_hash
+
+from utils import load_json, save_json, generate_hash, encode_vote, decode_vote
+from elgamal import encrypt, decrypt
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key_123"
@@ -56,10 +58,9 @@ def vote():
     if "user" not in session:
         return redirect("/")
 
-    voters = load_json("voters.json")
     votes = load_json("votes.json")
 
-    # 🔐 CHECK FROM VOTES.JSON (NOT has_voted)
+    # 🔐 Check if user already voted
     if any(v.get("username") == session["user"] for v in votes):
         return "You have already voted!"
 
@@ -68,12 +69,16 @@ def vote():
 
         prev_hash = votes[-1]["hash"] if votes else "0"
 
-        # 🔐 Include username in hash
-        vote_hash = generate_hash(candidate + session["user"], prev_hash)
+        # 🔐 Encrypt vote
+        encrypted_vote = encrypt(candidate)
+        encoded_vote = encode_vote(encrypted_vote)
+
+        # 🔗 Hash chain
+        vote_hash = generate_hash(encoded_vote + session["user"], prev_hash)
 
         votes.append({
             "username": session["user"],
-            "vote": candidate,
+            "vote": encoded_vote,
             "hash": vote_hash,
             "prev_hash": prev_hash
         })
@@ -120,7 +125,12 @@ def admin():
 
     valid = True
     prev_hash = "0"
-    results = {}
+
+    results = {
+        "candidate a": 0,
+        "candidate b": 0,
+        "candidate c": 0
+    }
 
     for v in votes:
         recalculated = generate_hash(v["vote"] + v["username"], prev_hash)
@@ -130,9 +140,23 @@ def admin():
             break
 
         prev_hash = v["hash"]
-        results[v["vote"]] = results.get(v["vote"], 0) + 1
 
-    return render_template("admin.html", results=results, valid=valid)
+        # 🔓 Decrypt vote
+        cipher = decode_vote(v["vote"])
+        decrypted_num = decrypt(cipher)
+
+        if decrypted_num == sum(ord(c) for c in "candidate a"):
+            vote = "candidate a"
+        elif decrypted_num == sum(ord(c) for c in "candidate b"):
+            vote = "candidate b"
+        else:
+            vote = "candidate c"
+
+        results[vote] += 1
+
+    total_votes = len(votes)
+
+    return render_template("admin.html", results=results, valid=valid, total=total_votes)
 
 
 # ================= LOGOUT =================

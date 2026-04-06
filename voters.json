@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "username": "abc",
+        "password": "scrypt:32768:8:1$U61BX2FWsiqMyiZt$436ce77ba52693721c7911ab96119c6c0a173978cd8d55c4dbde45a0c3b38ee0e07cd9b6d266fd974d9a6ca06781ddfac7d5cc4e11886a0e50e0f173e875efd4"
+    }
+]
