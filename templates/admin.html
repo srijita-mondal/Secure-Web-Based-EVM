@@ -1,0 +1,13 @@
+<h2>Election Results</h2>
+
+{% if valid %}
+<p style="color:green;">✔ Data Integrity Verified</p>
+{% else %}
+<p style="color:red;">⚠ Data Tampered!</p>
+{% endif %}
+
+<ul>
+{% for candidate, count in results.items() %}
+    <li>{{ candidate }} : {{ count }}</li>
+{% endfor %}
+</ul>

@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "voter": "voter1",
+    "cipher": [
+      21644,
+      28657
+    ],
+    "hash": "b6351550e0b809c63c4fbfc2dd0fdd1a6298c7cb7b2333eb1a64b641dde42348"
+  }
+]
