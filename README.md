@@ -1,55 +1,60 @@
-# Secure-Web-Based-EVM
-Prototype secure electronic voting system demonstrating authentication, hash-linked vote storage, and integrity verification. The system applies ElGamal public-key encryption to protect vote confidentiality and SHA-256 hashing to ensure vote integrity.
+# 🔐 Secure Web-Based EVM (Electronic Voting Machine)
 
-## Cryptographic Design
+## 📌 Project Overview
 
-Voting workflow:
+This project is a **Secure Web-Based Voting System** developed using Flask.  
+It allows users to register, log in, cast votes, and ensures **vote integrity and security** using cryptographic techniques.
 
-1. Voter authenticates
-2. Vote choice is encrypted using ElGamal public key
-3. Encrypted vote is stored with SHA-256 hash
-4. Hash verification detects tampering
-5. Duplicate voting prevented per voter
+The system focuses on:
+- Preventing duplicate voting
+- Securing user credentials
+- Detecting vote tampering
+- Providing admin-side verification
 
-This demonstrates core security properties of electronic voting:
+---
 
-- Confidentiality — ElGamal encryption
-- Integrity — cryptographic hashing
-- Authentication — voter login
-- Duplicate prevention — vote checks
+## 🚀 Features
 
-Note: Educational prototype with simplified parameters.
+- 👤 User Signup & Login
+- 🔐 Password Hashing (Secure Authentication)
+- 🗳️ Voting System with Candidate Selection
+- 🚫 One Vote per User
+- 🔗 Hash Chain for Vote Integrity
+- 🧑‍💼 Admin Panel for Result Verification
+- ⚠️ Tampering Detection Mechanism
+- 🎨 Clean UI using CSS
 
-# How to run?
-```bash
--pip install flask
--python3 app.py
-```
-open browser: http://127.0.0.1:5000
+---
 
-## Demonstration
+## 🛠️ Technologies Used
 
-### Server Running
-Flask backend hosting the secure voting application.
+- Python (Flask)
+- HTML, CSS
+- JSON (Data Storage)
+- SHA-256 Hashing
+- Werkzeug Security (Password Hashing)
 
-![Server](screenshots/server.png)
+---
 
-### Voter Authentication Interface
-Login page for credential verification.
+## 📂 Project Structure
 
-![Login](screenshots/login.png)
+"""
+Secure-Web-Based-EVM/
+│
+├── app.py # Main Flask Application
+├── utils.py # Helper functions (JSON + hashing)
+├── voters.json # Stores user data
+├── votes.json # Stores votes securely
+│
+├── templates/ # HTML Pages
+│ ├── login.html
+│ ├── signup.html
+│ ├── vote.html
+│ ├── success.html
+│ ├── admin.html
+│ └── admin_login.html
+│
+├── static/
+│ └── style.css # UI Styling
+"""
 
-### Vote Submission Interface
-Authenticated voter submitting candidate selection.
-
-![Vote](screenshots/vote.png)
-
-### Vote Recorded Confirmation
-Successful vote recording after encrypted and integrity-protected storage.
-
-![Success](screenshots/success.png)
-
-### Duplicate votes check(Still under process)
-Duplicate votes are checked and prevented. Till now duplicates are only checked by Username and Password. I will be working on digital signature algorithm for document verification.
-
-![Success](screenshots/duplicate.png)
